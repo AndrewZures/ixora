@@ -1,9 +1,16 @@
 import React, { Component } from 'react';
 
+// components
+import Navbar from './navbar/Navbar';
+import MainContent from './mainContent/MainContent';
+
 export default class App extends Component {
   render() {
     return (
-      <h1>Hello, world.</h1>
+      <div>
+        <Navbar />
+        <MainContent />
+      </div>
     );
   }
 }
