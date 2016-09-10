@@ -1,43 +1,46 @@
 import React, { Component } from 'react';
+import * as _ from 'lodash';
 import * as d3 from 'd3';
 
 export default class BasicGraph extends Component {
 
   componentDidMount() {
-    this.renderChart();
+    this.renderChart(this.props.data);
   }
 
   shouldComponentUpdate() {
     return false;
   }
 
-  renderChart() {
-    let data = [4, 8, 15, 16, 23, 42];
-    let width = 420;
-    let barHeight = 20;
-
-    let x = d3.scale.linear()
-    .domain([0, d3.max(data)])
-    .range([0, width]);
+  renderChart(data) {
+    let width = 960;
+    let height = 500;
 
     let chart = d3.select('#basic-chart')
     .attr('width', width)
-    .attr('height', barHeight * data.length);
+    .attr('height', height);
 
-    let bar = chart
-    .selectAll('g').data(data)
-    .enter().append('g')
-    .attr('transform', (d, i) => `translate(0,${i*barHeight})`);
+    let y = d3.scale.linear()
+      .domain([0, _.max(data)])
+      .range([height, 0]);
+
+    let barWidth = width / data.length;
+
+    let bar = chart.selectAll('g')
+      .data(data)
+      .enter().append('g')
+        .attr('transform', (d,i) => `translate(${i*barWidth}, 0)`)
 
     bar.append('rect')
-    .attr('width', x)
-    .attr('height', barHeight - 1);
+      .attr('y', d => y(d))
+      .attr('height', d => height - y(d))
+      .attr('width', barWidth - 1)
 
     bar.append('text')
-    .attr('x', d => x(d) - 3)
-    .attr('y', barHeight / 2)
-    .attr('dy', '.35em')
-    .text(d => d)
+      .attr('x', barWidth / 2)
+      .attr('y', d => y(d) + 3)
+      .attr('dy', '.75em')
+      .text(d => d)
   }
 
   render() {
