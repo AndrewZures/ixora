@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
-import store from '../store/store.js';
+import store from 'store/store.js';
 import { Router, Route, browserHistory } from 'react-router';
 import { Provider } from 'react-redux';
 import { syncHistoryWithStore, routerReducer } from 'react-router-redux';
 
 // components
-import Navbar from './navbar/Navbar';
-import About from './about/About';
-import Play from './play/Play';
-import D3 from './play/d3/D3';
+import Navbar from 'components/navbar/Navbar';
+import About from 'components/about/About';
+import Play from 'components/play/Play';
+import D3 from 'components/play/d3/D3';
 
 const history = syncHistoryWithStore(browserHistory, store);
 

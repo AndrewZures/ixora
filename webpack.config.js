@@ -13,6 +13,10 @@ module.exports = {
     filename: 'bundle.js',
     publicPath: '/static/'
   },
+  resolve: {
+    root: path.resolve('./src'),
+    extensions: ['', '.js', '.jsx']
+  },
   plugins: [
     new webpack.HotModuleReplacementPlugin()
   ],
