@@ -13,35 +13,58 @@ export default class BasicGraph extends Component {
   }
 
   renderChart(data) {
-    console.log(data);
-    let width = 960;
-    let height = 500;
+    let margin = { top: 20, right: 30, bottom: 30, left: 40 };
+    let width = 960 - margin.left - margin.right;
+    let height = 500 - margin.top - margin.bottom;
 
-    let chart = d3.select('#basic-chart')
-    .attr('width', width)
-    .attr('height', height);
+    let x = d3.scale.ordinal()
+      .rangeRoundBands([0, width], .1);
+
+    let xAxis = d3.svg.axis()
+      .scale(x)
+      .orient('bottom');
 
     let y = d3.scale.linear()
-      .domain([0, _.max(_.map(data, 'value'))])
       .range([height, 0]);
 
-    let barWidth = width / data.length;
+    let yAxis = d3.svg.axis()
+      .scale(y)
+      .orient('left')
+      .ticks(10, '%');
 
-    let bar = chart.selectAll('g')
+    let chart = d3.select('#basic-chart')
+      .attr('width', width + margin.left + margin.right)
+      .attr('height', height + margin.top + margin.bottom)
+      .append('g')
+        .attr('transform', `translate(${margin.left},${margin.top})`);
+
+    x.domain(_.map(data, 'name'));
+    y.domain([0, d3.max(data, d => d.value)]);
+
+    chart.append('g')
+      .attr('class', 'x axis')
+      .attr('transform', `translate(0,${height})`)
+      .call(xAxis);
+
+    chart.append("g")
+      .attr("class", "y axis")
+      .call(yAxis)
+      .append("text")
+        .attr("transform", "rotate(-90)")
+        .attr("y", 6)
+        .attr("dy", ".71em")
+        .style("text-anchor", "end")
+        .text("Frequency");
+
+    chart.selectAll('.bar')
       .data(data)
-      .enter().append('g')
-        .attr('transform', (d,i) => `translate(${i*barWidth}, 0)`)
-
-    bar.append('rect')
+      .enter()
+      .append('rect')
+      .attr('class', 'bar')
+      .attr('x', d => x(d.name))
       .attr('y', d => y(d.value))
       .attr('height', d => height - y(d.value))
-      .attr('width', barWidth - 1)
-
-    bar.append('text')
-      .attr('x', barWidth / 2)
-      .attr('y', d => y(d.value) + 3)
-      .attr('dy', '.75em')
-      .text(d => d.label)
+      .attr('width', x.rangeBand())
   }
 
   render() {
