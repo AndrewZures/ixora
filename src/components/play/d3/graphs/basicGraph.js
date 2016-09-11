@@ -13,6 +13,7 @@ export default class BasicGraph extends Component {
   }
 
   renderChart(data) {
+    console.log(data);
     let width = 960;
     let height = 500;
 
@@ -21,7 +22,7 @@ export default class BasicGraph extends Component {
     .attr('height', height);
 
     let y = d3.scale.linear()
-      .domain([0, _.max(data)])
+      .domain([0, _.max(_.map(data, 'value'))])
       .range([height, 0]);
 
     let barWidth = width / data.length;
@@ -32,15 +33,15 @@ export default class BasicGraph extends Component {
         .attr('transform', (d,i) => `translate(${i*barWidth}, 0)`)
 
     bar.append('rect')
-      .attr('y', d => y(d))
-      .attr('height', d => height - y(d))
+      .attr('y', d => y(d.value))
+      .attr('height', d => height - y(d.value))
       .attr('width', barWidth - 1)
 
     bar.append('text')
       .attr('x', barWidth / 2)
-      .attr('y', d => y(d) + 3)
+      .attr('y', d => y(d.value) + 3)
       .attr('dy', '.75em')
-      .text(d => d)
+      .text(d => d.label)
   }
 
   render() {
