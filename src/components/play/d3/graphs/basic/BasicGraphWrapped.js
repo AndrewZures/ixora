@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import BasicGraph from 'components/play/d3/graphs/basicGraph';
+import BasicGraph from 'components/play/d3/graphs/basic/BasicGraph';
 
 const mapStateToProps = (state) => {
   return {
