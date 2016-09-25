@@ -8,30 +8,14 @@
   border-style: solid;
   border-color: black;
 
-  .header-title {
-
-    h2 {
-      color: gray;
-    }
-
-  }
-
   ul {
     display: flex;
     flex-direction: row;
 
     li {
-      list-style-type: none;
       margin: 0em 1em 0em 1em;
 
-      a {
-        text-decoration: none;
-        color: gray;
 
-        &:hover {
-          color: black;
-        }
-      }
     }
 
     &.navbar-list {
@@ -46,10 +30,6 @@
     ul {
       display: flex;
       flex-direction: column;
-
-      li {
-        list-style-type: none;
-      }
     }
   }
 }

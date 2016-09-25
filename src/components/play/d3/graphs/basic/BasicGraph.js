@@ -46,15 +46,15 @@ export default class BasicGraph extends Component {
       .attr('transform', `translate(0,${height})`)
       .call(xAxis);
 
-    chart.append("g")
-      .attr("class", "y axis")
+    chart.append('g')
+      .attr('class', 'y axis')
       .call(yAxis)
-      .append("text")
-        .attr("transform", "rotate(-90)")
-        .attr("y", 6)
-        .attr("dy", ".71em")
-        .style("text-anchor", "end")
-        .text("Frequency");
+      .append('text')
+        .attr('transform', 'rotate(-90)')
+        .attr('y', 6)
+        .attr('dy', '.71em')
+        .style('text-anchor', 'end')
+        .text('Frequency');
 
     chart.selectAll('.bar')
       .data(data)
