@@ -1,22 +1,6 @@
-.bar {
-  fill: steelblue;
+@import './graphs.scss';
+@import './main_content.scss';
 
-  &:hover {
-    fill: firebrick;
-  }
-}
-
-.axis text {
-  font: 10px sans-serif;
-}
-
-.axis path,
-.axis line {
-  fill: none;
-  stroke: #000;
-  shape-rendering: crispEdges;
-}
-
-.x.axis path {
-  display: none;
+body {
+  font-family: "Lucida Console", sans-serif;
 }
