@@ -1,6 +1,10 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router';
 
+// components
+import PlayDropdownMenu from 'components/navbar/PlayDropdownMenu';
+import AboutDropdownmenu from 'components/navbar/AboutDropdownmenu';
+
 export default class NavBar extends Component {
   render() {
     return (
@@ -8,11 +12,10 @@ export default class NavBar extends Component {
         <header>
           <h2>Ixora</h2>
           <ul className="navbar-list">
-            <li><Link to="/about">About</Link></li>
-            <li><Link to="/play">Play</Link></li>
+            <li><AboutDropdownmenu /></li>
+            <li><PlayDropdownMenu /></li>
           </ul>
         </header>
-        {this.props.children}
       </div>
     );
   }

@@ -24,12 +24,39 @@
   }
 
   .navbar-menu {
-    position: relative;
-    z-index: 101;
 
     ul {
       display: flex;
       flex-direction: column;
+    }
+  }
+
+  .dropdown {
+
+    &:hover .dropdown-content {
+      display: block;
+    }
+  }
+
+  .dropdown-content {
+    display: none;
+    z-index: 2;
+    position: absolute;
+    right: 0;
+
+    ul {
+      position: relative;
+      min-width: 100px;
+      background-color: white;
+      padding: 0px;
+      display: flex;
+      flex-direction: column;
+      box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+
+      li {
+        margin: 0.2em 1em 0.2em 1em;
+      }
+
     }
   }
 }
