@@ -6,11 +6,10 @@ export default class PlayDropdownMenu extends Component {
   render() {
     return (
       <div className="dropdown">
-        <a href='#'>Play</a>
+        <Link to="/play/d3/bar_chart">Play</Link>
         <div className="dropdown-content">
           <ul>
-            <li><Link to="/play/d3/bar_chart">Bar Chart</Link></li>
-            <li><Link to="/play/d3/three_circles">Three Circles</Link></li>
+            <li><Link to="/play/d3/bar_chart">Graphs</Link></li>
           </ul>
         </div>
       </div>

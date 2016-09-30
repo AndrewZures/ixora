@@ -14,8 +14,6 @@
 
     li {
       margin: 0em 1em 0em 1em;
-
-
     }
 
     &.navbar-list {
@@ -23,11 +21,26 @@
     }
   }
 
+  .navbar-list {
+    color: blue;
+    padding-right: 2em;
+
+     li {
+       font-size: 20px;
+       display: flex;
+       align-items: center;
+       min-width: 2em;
+     }
+  }
+
   .navbar-menu {
 
     ul {
+      align-content: center;
       display: flex;
       flex-direction: column;
+      min-width: 3em;
+      padding: 1em;
     }
   }
 
@@ -39,21 +52,22 @@
   }
 
   .dropdown-content {
-    display: none;
+    // display: none;
     z-index: 2;
     position: absolute;
-    right: 0;
 
     ul {
-      position: relative;
-      min-width: 100px;
-      background-color: white;
       padding: 0px;
+      width: inherit;
+      position: relative;
+      background-color: white;
       display: flex;
+      align-items: center;
       flex-direction: column;
       box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
 
       li {
+        font-size: 16px;
         margin: 0.2em 1em 0.2em 1em;
       }
 

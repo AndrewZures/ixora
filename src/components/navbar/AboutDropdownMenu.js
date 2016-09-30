@@ -6,7 +6,7 @@ export default class PlayDropdownMenu extends Component {
   render() {
     return (
       <div className="dropdown">
-        <a href='#'>About</a>
+        <Link to="/about">About</Link>
         <div className="dropdown-content">
           <ul>
             <li><a href="#">hi</a></li>
