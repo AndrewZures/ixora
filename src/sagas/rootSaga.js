@@ -13,6 +13,6 @@ function* watchIncrementAsync() {
 
 export default function* rootSaga() {
   yield [
-    watchIncrementAsync,
+    watchIncrementAsync(),
   ]
 }

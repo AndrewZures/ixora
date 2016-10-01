@@ -48,9 +48,11 @@
     "webpack-dev-server": "^1.12.1"
   },
   "dependencies": {
+    "babel-polyfill": "^6.16.0",
     "d3": "^3.5.17",
     "react": "^0.14.6",
     "react-dom": "^0.14.6",
+    "react-redux": "^4.4.5",
     "react-router": "^2.8.0",
     "react-router-redux": "^4.0.5",
     "redux-logger": "^2.6.1",

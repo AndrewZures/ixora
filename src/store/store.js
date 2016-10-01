@@ -16,8 +16,10 @@ const rootReducer = combineReducers({
   graphs,
 });
 
-const middlewares = [createSagaMiddleware(rootSaga), createLogger()];
-
+const logger = createLogger();
+const sagaMiddleware = createSagaMiddleware();
+const middlewares = [sagaMiddleware, logger];
 const store = createStore(rootReducer, initialData, applyMiddleware(...middlewares));
+sagaMiddleware.run(rootSaga);
 
 export default store;
